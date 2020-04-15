@@ -22,6 +22,16 @@ A borderless implementation of the Game of Life cellular automaton.
 
         return new
 
+    def read(pattern, living='O', delta=(0,0)):
+        """Reads a plaintext pattern and return its set of living cells."""
+
+        universe = set()
+        for y,row in enumerate(reversed(pattern)):
+            for x,cell in enumerate(row):
+                if cell == living: universe.add((x+delta[0],y+delta[1]))
+
+        return universe
+        
     def show(universe, (X,Y)):
         """Prints a rectangular portion of the universe on the screen."""
 
@@ -39,10 +49,16 @@ A borderless implementation of the Game of Life cellular automaton.
     try: input = raw_input  # Python 2
     except NameError: pass  # Python 3
 
-    # The set of living cells:  https://xkcd.com/2293/
-    universe = {(0,4),(1,3),(2,0),(2,1),(2,4),(2,6),(2,7),
-                (2,8),(3,2),(3,3),(3,4),(3,5),(3,8),(4,0),
-                (4,1),(4,4),(4,6),(4,7),(4,8),(5,3),(6,2)}
+    # Read the set of living cells from plaintext -- https://xkcd.com/2293/
+    universe = read(("..OOO..",
+                     "..O.O..",
+                     "..O.O..",
+                     "...O...",
+                     "O.OOO..",
+                     ".O.O.O.",
+                     "...O..O",
+                     "..O.O..",
+                     "..O.O.."))
 
     # The visible universe: (x_range, y_range)
     window = ((-3,10), (-3,15))                 
