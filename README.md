@@ -47,13 +47,13 @@ A borderless implementation of the Game of Life cellular automaton.
     # The visible universe: (x_range, y_range)
     window = ((-3,10), (-3,15))                 
 
-    # Press Ctrl+C to exit
-    stop = ""
-    while(not stop):
+    # Press Ctrl+C to exit:
+    while(True):
         show(universe, window)
         universe = GameOfLife(universe)
         stop = input("\nPress <Return> to perform a step.")
         print("\x1b[1A\x1b[2K\x1b[1A\x1b[2K\x1b[1A")
+        if stop: break
 ```
 
 **Output:**
