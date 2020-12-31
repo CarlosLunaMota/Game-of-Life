@@ -6,41 +6,38 @@ A borderless implementation of the Game of Life cellular automaton.
 ```python
     from collections import defaultdict
 
-    def GameOfLife(universe):
-        """Performs a single iteration of Game of Life in a borderless universe."""
+    def next_GameOfLife(universe):
+        """Performs a single iteration of Game of Life in a boundless universe."""
 
-        neighbors    = defaultdict(int)
-        neighborhood = ((-1,-1),(-1,0),(-1,1),(0,-1),(0,1),(1,-1),(1,0),(1,1))
-        
+        candidates = defaultdict(int)
         for (x,y) in universe:
-            for (dx,dy) in neighborhood:
-                neighbors[(x+dx,y+dy)] += 1
+            for (dx,dy) in ((-1,-1),(-1,0),(-1,1),(0,-1),(0,1),(1,-1),(1,0),(1,1)):
+                candidates[(x+dx,y+dy)] += 1
 
-        new = set()
-        for cell,n in neighbors.items():
-            if n == 3 or (n == 2 and cell in universe): new.add(cell)
+        new_universe = set()
+        for cell, neighbors in candidates.items():
+            if neighbors == 3 or (neighbors == 2 and cell in universe):
+                new_universe.add(cell)
 
-        return new
+        return new_universe
 
-    def read(pattern, living='O', delta=(0,0)):
-        """Reads a plaintext pattern and return its set of living cells."""
+    def read_GameOfLife(pattern, living='O'):
+        """Reads a pattern and return its set of living cells."""
 
         universe = set()
         for y,row in enumerate(reversed(pattern)):
             for x,cell in enumerate(row):
-                if cell == living: universe.add((x+delta[0],y+delta[1]))
+                if cell == living: universe.add((x,y))
 
         return universe
-        
-    def show(universe, (X,Y)):
-        """Prints a rectangular portion of the universe on the screen."""
 
-        length = 2*(X[1]-X[0]) + 1
-        print('╔'+ '═'*length + '╗')
+    def show_GameOfLife(universe, X, Y):
+        """Prints a rectangular window of the universe on the screen."""
+
+        print('╔'+'═'*(2*(X[1]-X[0])+1)+'╗')
         for y in reversed(range(*Y)):
-            row = ' '.join('■' if (x,y) in universe else ' ' for x in range(*X))
-            print('║ ' + row  + ' ║')
-        print('╚' + '═'*length + '╝')
+            print('║ '+' '.join(' ■'[(x,y) in universe] for x in range(*X))+' ║')
+        print('╚'+'═'*(2*(X[1]-X[0])+1)+'╝')
 ```
 
 **Example:**
@@ -50,24 +47,21 @@ A borderless implementation of the Game of Life cellular automaton.
     except NameError: pass  # Python 3
 
     # Read the set of living cells from plaintext -- https://xkcd.com/2293/
-    universe = read(("..OOO..",
-                     "..O.O..",
-                     "..O.O..",
-                     "...O...",
-                     "O.OOO..",
-                     ".O.O.O.",
-                     "...O..O",
-                     "..O.O..",
-                     "..O.O.."))
+    universe = read_GameOfLife(("..OOO..",
+                                "..O.O..",
+                                "..O.O..",
+                                "...O...",
+                                "O.OOO..",
+                                ".O.O.O.",
+                                "...O..O",
+                                "..O.O..",
+                                "..O.O.."))
 
-    # The visible universe: (x_range, y_range)
-    window = ((-3,10), (-3,15))                 
-
-    # Press Ctrl+C to exit:
+    # Press Ctrl+C to exit
     while(True):
-        show(universe, window)
-        universe = GameOfLife(universe)
-        stop = input("\nPress <Return> to perform a step.")
+        show_GameOfLife(universe, (-3,10), (-3,15))
+        universe = next_GameOfLife(universe)
+        stop     = input("\nPress <Return> to perform a step.")
         print("\x1b[1A\x1b[2K\x1b[1A\x1b[2K\x1b[1A")
         if stop: break
 ```
