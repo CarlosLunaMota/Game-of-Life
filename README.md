@@ -43,7 +43,7 @@ def show_GameOfLife(universe, X, Y):
 **Example:**
 
 ```python
-    # Read the set of living cells from plaintext -- https://xkcd.com/2293/
+# Read the set of living cells from plaintext -- https://xkcd.com/2293/
 universe = read_GameOfLife(("..OOO..",
                             "..O.O..",
                             "..O.O..",
