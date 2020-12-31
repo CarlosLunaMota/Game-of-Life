@@ -1,5 +1,5 @@
 # Game of Life
-A borderless implementation of the Game of Life cellular automaton.
+A minimalist implementation of the Game of Life cellular automaton.
 
 **Code:**
 
