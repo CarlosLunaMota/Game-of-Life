@@ -1,6 +1,6 @@
 # Game of Life
 
-A minimalist implementation of the Game of Life cellular automaton. [Read the details!](/The%20Game%20of%20Life%20masterclass.md).
+A minimalist implementation of the Game of Life cellular automaton. [**Read the details!**](/The%20Game%20of%20Life%20masterclass.md)
 
 **Code:**
 

@@ -303,5 +303,5 @@ while(True):
 
  * **Try to achieve elegance.** Even for a seemingly simple task like this one, there always will be several approaches you can use. If the code is getting ugly, you should reconsider your initial assumptions.
  * **Efficiency via elegance.** In a high-level language like Python, elegant code is, very often, efficient code. Python's default data structures are faster that whatever you might be able to implement on your own (and will become more efficient in the future without your intervention). You should know which coding patterns are more efficient in your language of choice.
- * **Flexibility via elegance.** A 15 lines-of-code implementation is something you can read, understand and rewrite in 10 minutes. Very often, trying to create a very general
+ * **Flexibility via elegance.** A 15 lines-of-code implementation is something you can read, understand and rewrite in 10 minutes. Very often, trying to achieve a flexible implementation results in an overly complex code that nobody is able to modify/adapt/upgrade.
  * **Elegance is hard to achieve.** No one is able to do it right at first. It took me many years to interiorize the lessons I explained in this tutorial. Keep learning and keep sharing your knowledge, so others can learn too.
