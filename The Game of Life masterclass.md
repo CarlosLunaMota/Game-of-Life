@@ -277,26 +277,26 @@ def show_GameOfLife(universe, x_range, y_range):
 and test our code:
 
 ```python3
-    # Settings:
-    x_range = range(-3,10)
-    y_range = range(-3,15)
-    pattern = ("..OOO..",   ##########################
-               "..O.O..",   #                        #
-               "..O.O..",   #    RIP John Conway     #
-               "...O...",   #      (1937-2020)       #
-               "O.OOO..",   #                        #
-               ".O.O.O.",   # https://xkcd.com/2293/ #
-               "...O..O",   #                        #
-               "..O.O..",   ##########################
-               "..O.O..")
+# Settings:
+x_range = range(-3,10)
+y_range = range(-3,15)
+pattern = ("..OOO..",   ##########################
+           "..O.O..",   #                        #
+           "..O.O..",   #    RIP John Conway     #
+           "...O...",   #      (1937-2020)       #
+           "O.OOO..",   #                        #
+           ".O.O.O.",   # https://xkcd.com/2293/ #
+           "...O..O",   #                        #
+           "..O.O..",   ##########################
+           "..O.O..")
 
-    # Main loop:
-    universe = read_GameOfLife(pattern)
-    while(True):
-        show_GameOfLife(universe, x_range, y_range)
-        universe = next_GameOfLife(universe)
-        wait     = input("\nPress <Return> to perform a step.")
-        print("\x1b[1A\x1b[2K\x1b[1A\x1b[2K\x1b[1A")
+# Main loop:
+universe = read_GameOfLife(pattern)
+while(True):
+    show_GameOfLife(universe, x_range, y_range)
+    universe = next_GameOfLife(universe)
+    wait     = input("\nPress <Return> to perform a step.")
+    print("\x1b[1A\x1b[2K\x1b[1A\x1b[2K\x1b[1A")
 ```
 
 ## Summary
