@@ -63,7 +63,7 @@ if __name__ == '__main__':
 
     # Main loop:
     universe = read_GameOfLife(pattern)
-    while(True):
+    while True:
         show_GameOfLife(universe, x_range, y_range)
         universe = next_GameOfLife(universe)
         wait     = input("\nPress <Return> to perform a step.")
