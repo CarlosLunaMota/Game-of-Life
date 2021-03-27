@@ -161,9 +161,9 @@ def next_GameOfLife(universe):
 
 Note that we do not need to include the current live cells on the `candidates` set because, even if a cell is alive, it won't remain in that state unless it has, at least, 2 neighbors (and we just care about live cells now).
 
-Note also that we are taking advantage of the "overwritting" feature of python's sets: we can safely include the same candidate several times (because it has more than one neighbor) and the data structure will take care of removing the repeated elements automatically.
+Note also that we are taking advantage of the "overwritting" feature of Python's sets: we can safely include the same candidate several times (because it has more than one neighbor) and the data structure will take care of removing the repeated elements automatically.
 
-Finally, we are also using python's sets to store the live cells because we need to perform a lot of inclusion tests, `(x,y) in universe`, and python's sets do them more efficiently than python's lists.
+Finally, we are also using Python's sets to store the live cells because we need to perform a lot of inclusion tests, `(x,y) in universe`, and Python's sets do them more efficiently than Python's lists.
 
 This implementation is more elegant, more capable and more efficient that the previous one, but there is room for improvement. Let's see how!
 
@@ -185,7 +185,7 @@ Rewriting the rules like this, we can clearly see that it is always necessary to
 
  * A cell will be alive in the next generation if and only if it has 3 neighbors or (it has 2 neighbors and is currently live)
 
-So we could avoid checking the current state of the cell unless it is absolutely necessary, and save some _relatively costly_ inclusion test, exploiting the short-circuit behavior of python's `and` and `or` operators.
+So we could avoid checking the current state of the cell unless it is absolutely necessary, and save some _relatively costly_ inclusion test, exploiting the short-circuit behavior of Python's `and` and `or` operators.
 
 ```python3
 def next_GameOfLife(universe):
@@ -231,7 +231,7 @@ def next_GameOfLife(universe):
     return new_universe
 ```
 
-Now we are using python's dictionaries for the `candidates` containers, so we can store additional information associated with each candidate (its number of neighbors). The pattern that we are using here, updating a dictionary entry if it exists or creating it if it doesn't, is so common that python has a specific data structure, `defaultdict`, in the `collections` module to do that in the most efficient way:
+Now we are using Python's dictionaries for the `candidates` containers, so we can store additional information associated with each candidate (its number of neighbors). The pattern that we are using here, updating a dictionary entry if it exists or creating it if it doesn't, is so common that Python has a specific data structure, `defaultdict`, in the `collections` module to do that in the most efficient way:
 
 ```python3
 from collections import defaultdict
