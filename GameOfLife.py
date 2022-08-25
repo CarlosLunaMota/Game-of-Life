@@ -4,7 +4,7 @@
 
 __author__   = "Carlos Luna-Mota"
 __license__  = "The Unlicense"
-__version__  = "20210327"
+__version__  = "20220825"
 __all__      = ["next_GameOfLife", "read_GameOfLife", "show_GameOfLife"]
 
 ################################################################################
@@ -30,19 +30,20 @@ def read_GameOfLife(pattern, origin=(0,0), alive='O'):
     """Reads a pattern and return its set of live cells."""
 
     universe = set()
-    for y,row in enumerate(reversed(pattern)):
+    for y,row in enumerate(pattern):
         for x,cell in enumerate(row):
             if cell == alive: universe.add((origin[0]+x, origin[1]+y))
 
     return universe
 
-def show_GameOfLife(universe, x_range, y_range):
+def show_GameOfLife(universe, X, Y):
     """Prints a rectangular window of the universe on the screen."""
 
-    print('╔' + '═' * (2*len(x_range) + 1) + '╗')
-    for y in reversed(y_range):
-        print('║ ' + ' '.join(' ■'[(x,y) in universe] for x in x_range) + ' ║')
-    print('╚' + '═' * (2*len(x_range) + 1) + '╝')
+    print('╔' + '═' * (2*len(X) + 1) + '╗')
+    for y in Y: print('║ '+' '.join(' ■'[(x,y) in universe] for x in X)+' ║')
+    print('╚' + '═' * (2*len(X) + 1) + '╝')
+
+
 
 ################################################################################
 
