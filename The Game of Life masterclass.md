@@ -278,7 +278,7 @@ and test our code:
 ```python3
 # Settings:
 x_range = range(-3,10)
-y_range = range(-3,15)
+y_range = range(-6,12)
 pattern = ("..OOO..",   ##########################
            "..O.O..",   #                        #
            "..O.O..",   #    RIP John Conway     #

@@ -39,11 +39,9 @@ def read_GameOfLife(pattern, origin=(0,0), alive='O'):
 def show_GameOfLife(universe, X, Y):
     """Prints a rectangular window of the universe on the screen."""
 
-    print('╔' + '═' * (2*len(X) + 1) + '╗')
+    print('╔' + '═' * (2*len(x_range) + 1) + '╗')
     for y in Y: print('║ '+' '.join(' ■'[(x,y) in universe] for x in X)+' ║')
-    print('╚' + '═' * (2*len(X) + 1) + '╝')
-
-
+    print('╚' + '═' * (2*len(x_range) + 1) + '╝')
 
 ################################################################################
 
@@ -51,7 +49,7 @@ if __name__ == '__main__':
 
     # Settings:
     x_range = range(-3,10)
-    y_range = range(-3,15)
+    y_range = range(-6,12)
     pattern = ("..OOO..",   ##########################
                "..O.O..",   #                        #
                "..O.O..",   #    RIP John Conway     #
